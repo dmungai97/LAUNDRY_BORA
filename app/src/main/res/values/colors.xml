@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="lavender">#8692f7</color>
+    <color name="owl_yellow">#FFDE03</color>
+    <color name="blue">#2680b6</color>
+
+    <color name="colorPrimary1">#3F51B5</color>
+    <color name="colorPrimaryDark1">#303F9F</color>
+    <color name="colorAccent1">#FF4081</color>
+
+    <!--colors for profile-->
+    <color name="profilePrimaryDark">#FF3B30</color>
+    <color name="profileAccentColor">#F7F7F7</color>
+    <color name="whiteTextColor">#fff</color>
+    <color name="profileBackground">#fff</color>
+    <color name="blackTextColor">#000</color>
+    <color name="profileEditTextColor">#707070</color>
+     <color name="cardbg">#80ffffff</color>
+    <color name="cardbg2">#363668</color>
+
+        <!-- 11 colors -->
+
+
+
+        <color name="colorPrimary">#008577</color>
+        <color name="colorPrimaryDark">#00574B</color>
+        <color name="colorAccent">#D81B60</color>
+
+        <color name="_bg___11_color">#ffffff</color>
+        <color name="mark__how_is_your_trip__color">#303030</color>
+        <color name="you_are_in_place__color">#ffffff</color>
+        <color name="divider_color">#f6f6f6</color>
+        <color name="additional_comment_color">#d6d6d6</color>
+        <color name="marius_ciocirlan_398931_unsplash_ek1_color">#2dbb54</color>
+        <color name="submit_color">#2dbb54</color>
+    <color name="primaryDark">#130D0C</color>
+</resources>
+

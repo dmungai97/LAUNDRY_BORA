@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home"
+    android:background="@drawable/aboutbg"
+    android:backgroundTintMode="src_over"
+    android:backgroundTint="#5B020A1E">
+
+  <View
+      android:id="@+id/topView"
+      android:layout_width="match_parent"
+      android:layout_height="70dp"
+      android:background="@drawable/card_bg"
+      android:backgroundTint="@android:color/transparent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+
+  <TextView
+      android:id="@+id/title_View"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="12dp"
+
+      android:text="@string/home_page"
+      android:textColor="@color/_bg___11_color"
+      android:textSize="30sp"
+      android:textStyle="bold"
+      android:fontFamily="@font/lato_black"/>
+
+  <GridLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/title_View"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginEnd="20dp"
+      android:layout_marginBottom="20dp"
+      android:columnCount="2"
+      android:rowCount="4">
+
+    <androidx.cardview.widget.CardView
+
+        android:foreground="?selectableItemBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_rowWeight="1"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:layout_margin="8dp"
+
+        android:backgroundTint="@color/cardbg"
+        android:clickable="true"
+        android:onClick="profile"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical|center_horizontal"
+          android:gravity="center"
+          android:orientation="vertical">
+
+        <ImageView
+            android:background="@drawable/iconbg"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="20dp"
+            app:tint="#fff"
+            android:src="@drawable/ic_baseline_account_circle_25" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_black"
+            android:text="Profile"
+            android:textColor="#3c92e9"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+      </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:foreground="?selectableItemBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_rowWeight="1"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/cardbg"
+        android:clickable="true"
+        android:onClick="taskinprogress"
+        app:cardCornerRadius="8dp"
+
+        app:cardElevation="0dp">
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical|center_horizontal"
+          android:gravity="center"
+          android:orientation="vertical">
+
+        <ImageView
+            android:background="@drawable/inprogressicon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="20dp"
+            app:tint="#fff"
+            android:src="@drawable/loading2" />
+
+        <ProgressBar
+            android:id="@+id/taskprogressbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="50"
+
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:indeterminate="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Task Inprogress"
+            android:fontFamily="@font/lato_black"
+            android:textAlignment="center"
+
+            android:textStyle="bold" />
+      </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:foreground="?selectableItemBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_rowWeight="1"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/cardbg"
+        android:clickable="true"
+        android:onClick="send_request"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical|center_horizontal"
+          android:gravity="center"
+          android:orientation="vertical">
+
+        <ImageView
+            android:background="@drawable/sendreqicon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="20dp"
+            app:tint="#fff"
+            android:src="@drawable/sendreq" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send Request"
+            android:fontFamily="@font/lato_black"
+            android:textAlignment="center"
+            android:textColor="#2CE177"
+            android:textStyle="bold" />
+      </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:foreground="?selectableItemBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_rowWeight="1"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/cardbg"
+        android:clickable="true"
+        android:onClick="history"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical|center_horizontal"
+          android:gravity="center"
+          android:orientation="vertical">
+
+        <ImageView
+            android:background="@drawable/historyicon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="20dp"
+            app:tint="#fff"
+            android:src="@drawable/ic_baseline_history_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="History"
+            android:textSize="20sp"
+
+            android:fontFamily="@font/lato_black"
+            />
+      </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:foreground="?selectableItemBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_rowWeight="1"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/cardbg"
+        android:clickable="true"
+        android:onClick="declinedreqs"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical|center_horizontal"
+          android:gravity="center"
+          android:orientation="vertical">
+
+        <ImageView
+            android:background="@drawable/declinedreqicon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="20dp"
+            app:tint="#fff"
+            android:src="@drawable/ic_baseline_cancel_schedule_send_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Declined Requests"
+            android:fontFamily="@font/lato_black"
+            android:textAlignment="center"
+
+            android:textStyle="bold" />
+      </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:foreground="?selectableItemBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_rowWeight="1"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/cardbg"
+        android:clickable="true"
+        android:onClick="pendingreq"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical|center_horizontal"
+          android:gravity="center"
+          android:orientation="vertical">
+
+        <ImageView
+            android:background="@drawable/penndingrecicon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="20dp"
+            app:tint="#fff"
+            android:src="@drawable/ic_baseline_pending_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pending Request"
+            android:fontFamily="@font/lato_black"
+            android:textAlignment="center"
+
+            android:textStyle="bold" />
+      </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+  </GridLayout>
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Laundry personnel  Mis</string>
+    <string name="app_names" translatable="false">LAUNDRY BORA</string>
+    <string name="dev" translatable="false">MUNGAI</string>
+
+
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="mark__how_is_your_trip__string">Mark,\
+How is your trip?</string>
+    <string name="you_are_in_place__string">You are in place!</string>
+    <string name="your_driver__wasilij_smith_string">Your Driver:\
+Wasilij Smith</string>
+    <string name="distance__15_km_string">Distance:\
+15 km</string>
+    <string name="time__15_min_string">Time:\
+15 min</string>
+    <string name="price___9_99_string">Price:\
+$9,99</string>
+    <string name="additional_comment_string">Additional comment</string>
+    <string name="submit_string">Submit</string>
+    <string name="laundry_app_name">Laundry Bora</string>
+    <string name="home_page">HOME🏘</string>
+    <string name="type_your_feedback">Type your feedback</string>
+</resources>
