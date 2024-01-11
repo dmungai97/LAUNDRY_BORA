@@ -26,16 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
-import javax.mail.Address;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 
 public class servicemenlist extends AppCompatActivity {
@@ -127,7 +118,6 @@ reff.addValueEventListener(new ValueEventListener() {
                         newr = snapshot.child(phone).child("new request").child("phone").getValue(String.class);
 
                         if (Inprogress.equals("null") && newr.equals("null")) {
-
                             final String username = "ianmunenemwenda@gmail.com";
                             final String passcode = "0711267846";
                             phone = txtphone.getText().toString();
@@ -184,9 +174,3 @@ reff.addValueEventListener(new ValueEventListener() {
 
     }
     }
-
-
-
-
-
-
