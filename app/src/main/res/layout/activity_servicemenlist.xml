@@ -4,68 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".servicemenlist"
     android:orientation="vertical"
     android:background="#8A023C45"
     android:backgroundTintMode="src_over">
 
-
+    <!-- Header -->
     <LinearLayout
-        android:id="@+id/li1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/cardbg"
+        android:padding="16dp"
+        android:background="@color/owl_yellow"
+        android:orientation="vertical">
 
-        android:orientation="vertical"
-        app:layout_constraintBaseline_toBottomOf="parent">
-
-        <EditText
-            android:id="@+id/Send_phone"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edit_style"
-            android:backgroundTint="@color/divider_color"
-            android:drawableLeft="@drawable/ic_baseline_call_24"
-            android:ems="10"
-            android:hint="Phone"
-            android:inputType="phone" />
+            android:text="@string/list_header"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"/>
 
-        <EditText
-            android:id="@+id/ClientLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_style"
-            android:backgroundTint="@color/divider_color"
-            android:drawableLeft="@drawable/ic_baseline_gps_fixed_24"
-            android:ems="10"
-            android:hint="Enter your Location"
-            android:inputType="textPostalAddress" />
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/imageButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/pick_total_shape"
-            android:backgroundTint="#01973F"
-            android:onClick="send_now"
-            android:text="Order now"
-            android:textColor="@color/white" />
-
+        <!-- You can add more views or customize the header as needed -->
 
     </LinearLayout>
 
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/servicelist"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-
-        />
 </LinearLayout>

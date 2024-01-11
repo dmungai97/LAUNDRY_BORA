@@ -22,4 +22,5 @@ $9,99</string>
     <string name="laundry_app_name">Laundry Bora</string>
     <string name="home_page">HOME🏘</string>
     <string name="type_your_feedback">Type your feedback</string>
+    <string name="list_header">Laundry Personnel</string>
 </resources>
