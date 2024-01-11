@@ -76,53 +76,6 @@ public class servicemenlist extends AppCompatActivity {
         Total=get.getIntExtra("Total",0);
 
 
-        /*   String apiKey = getString(R.string.api_key);
-        if (!Places.isInitialized()) {
-            Places.initialize(getApplicationContext(), apiKey);
-        }
-
-
-
-     txtClientLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Set the fields to specify which types of place data to
-                // return after the user has made a selection.
-                List<Place.Field> field = Arrays.asList(Place.Field.ID, Place.Field.ADDRESS);
-
-                // Start the autocomplete intent.
-                Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, field)
-                        .build(Address.this);
-                //start activity result
-                startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
-
-            }
-        });
-        @Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
-                if (resultCode == RESULT_OK) {
-                    //When success initialize place
-                    Place place = Autocomplete.getPlaceFromIntent(data);
-
-                    //set address on edittext
-                    maddress.setText(place.getAddress());
-                } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
-                    // TODO: Handle the error.
-                    Status status = Autocomplete.getStatusFromIntent(data);
-                    //Log.i(TAG, status.getStatusMessage());
-                } else if (resultCode == RESULT_CANCELED) {
-                    // The user canceled the operation.
-                }
-            }
-        }
-*/
-
-
-
-
-
    recyclerView=findViewById(R.id.servicelist);
    reff= FirebaseDatabase.getInstance().getReference("servicemen");
    recyclerView.setHasFixedSize(true);
@@ -191,31 +144,6 @@ reff.addValueEventListener(new ValueEventListener() {
                             Clientpending newpending = new Clientpending(phone, name, message);
                             reff.setValue(newpending);
 
-                  /*  Properties props=new Properties();
-                    props.put("mail.smtp","true");
-                    props.put("mail.smtp.starttls.enabe","true");
-                    props.put("mail.smtp.host","smtp.gmail.com");
-                    props.put("mail.smtp.port","587");
-                            javax.mail. Session session=Session.getInstance(props,
-                            new javax.mail.Authenticator(){
-                                @Override
-                                protected PasswordAuthentication getPasswordAuthentication() {
-                                    return new PasswordAuthentication(username,passcode);
-                                }
-                            });
-                    try{
-                        Message m= new MimeMessage(session);
-                        m.setFrom(new InternetAddress(username));
-                        m.setRecipients(Message.RecipientType.TO,InternetAddress.parse(email));
-                        m.setSubject("New request from"+phone1+"-"+name1);
-                        m.setText("items ="+message);
-                        Transport.send(m);
-                    }catch (MessagingException e){
-                        throw new RuntimeException(e);
-
-                    }*/
-
-
                             Toast.makeText(servicemenlist.this, "Request sent to " + phone + "\n" + name + "......", Toast.LENGTH_LONG).show();
                             Home();
                         } else {
@@ -256,13 +184,6 @@ reff.addValueEventListener(new ValueEventListener() {
 
     }
     }
-
-
-
-
-
-
-
 
 
 
