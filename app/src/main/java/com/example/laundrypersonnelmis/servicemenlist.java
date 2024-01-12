@@ -1,16 +1,14 @@
 package com.example.laundrypersonnelmis;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
@@ -23,73 +21,71 @@ import java.util.ArrayList;
 
 public class servicemenlist extends AppCompatActivity {
 
-    EditText txtphone, txtClientLocation;
-    RecyclerView recyclerView;
-    DatabaseReference reff;
-    myAdapter myad;
-    ArrayList<Servicemenhelper> List;
-    String message, phone, email, password, name, phone1, location, ClientLocation;
-    Integer Trouser;
-    Integer Jacket;
-    Integer Shirt;
-    Integer Tshirt;
-    Integer Dress;
-    Integer Skirt;
-    Integer Shoes;
-    Integer Sweater, Total;
+    private RecyclerView recyclerView;
+    private DatabaseReference servicemenRef;
+    private myAdapter myAdapter;
+    private ArrayList<Servicemenhelper> servicemenList;
+    private String phone, name, email, password, location;
+    private Integer Trouser, Jacket, Shirt, Tshirt, Dress, Skirt, Shoes, Sweater, Total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servicemenlist);
 
+        // Retrieve data from the previous activity
+        Intent getIntent = getIntent();
+        Trouser = getIntent.getIntExtra("Trouser", 0);
+        Jacket = getIntent.getIntExtra("Jacket", 0);
+        Shirt = getIntent.getIntExtra("Shirt", 0);
+        Dress = getIntent.getIntExtra("Dress", 0);
+        Tshirt = getIntent.getIntExtra("Tshirt", 0);
+        Skirt = getIntent.getIntExtra("Skirt", 0);
+        Shoes = getIntent.getIntExtra("Shoes", 0);
+        Sweater = getIntent.getIntExtra("Sweater", 0);
+        Total = getIntent.getIntExtra("Total", 0);
 
-        // ... (Your existing code)
-        Intent get = getIntent();
-        Trouser = get.getIntExtra("Trouser",0 );
-        Jacket = get.getIntExtra("Jacket",0 );
-        Shirt = get.getIntExtra("Shirt",0 );
-        Dress = get.getIntExtra("Dress",0 );
-        Tshirt = get.getIntExtra("Tshirt",0 );
-        Skirt = get.getIntExtra("Skirt",0 );
-        Shoes = get.getIntExtra("Shoes",0 );
-        Sweater = get.getIntExtra("Sweater",0 );
-        Total=get.getIntExtra("Total",0);
-
+        // Initialize UI components
         recyclerView = findViewById(R.id.servicelist);
-        reff = FirebaseDatabase.getInstance().getReference("servicemen");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        List = new ArrayList<>();
-        myad = new myAdapter(this, List);
-        recyclerView.setAdapter(myad);
 
-        // Add click listener to RecyclerView items
+        // Initialize Firebase
+        servicemenRef = FirebaseDatabase.getInstance().getReference("servicemen");
 
-        reff.addValueEventListener(new ValueEventListener() {
+        // Initialize data list and adapter
+        servicemenList = new ArrayList<>();
+        myAdapter = new myAdapter(this, servicemenList);
+        recyclerView.setAdapter(myAdapter);
+
+        // Set up ValueEventListener for Firebase data
+        servicemenRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                servicemenList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Servicemenhelper servicemenhelper = dataSnapshot.getValue(Servicemenhelper.class);
-                    List.add(servicemenhelper);
+                    servicemenList.add(servicemenhelper);
                 }
-                myad.notifyDataSetChanged();
+                myAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(servicemenlist.this, "Failed to load data", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Set up RecyclerView item click listener
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Servicemenhelper clickedItem = List.get(position);
+                        Servicemenhelper clickedItem = servicemenList.get(position);
                         String clickedPhone = clickedItem.getPhone();
                         Toast.makeText(servicemenlist.this, "Clicked on: " + clickedPhone, Toast.LENGTH_SHORT).show();
 
-                        send_now(clickedPhone);
+                        sendRequest(clickedPhone);
                     }
 
                     @Override
@@ -98,48 +94,44 @@ public class servicemenlist extends AppCompatActivity {
                     }
                 })
         );
-
     }
 
-    // ... (Your existing code)
-    public void send_now(String clickedPhone) {
+    private void sendRequest(String clickedPhone) {
         // Use clickedPhone instead of extracting it from txtphone
 
-        Intent getphone = getIntent();
-        String phone1 = getphone.getStringExtra("phone");
-        String name1 = getphone.getStringExtra("name");
-        String newPendingKey = reff.push().getKey();
+        Intent getIntent = getIntent();
+        String phone1 = getIntent.getStringExtra("phone");
+        String name1 = getIntent.getStringExtra("name");
+        String newPendingKey = servicemenRef.push().getKey();
 
-
-        reff = FirebaseDatabase.getInstance().getReference("servicemen");
-        reff.addListenerForSingleValueEvent(new ValueEventListener() {
+        servicemenRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(clickedPhone)) {
-                    String Inprogress, newr;
-                    Inprogress = snapshot.child(clickedPhone).child("Inprogress").child("phone").getValue(String.class);
-                    newr = snapshot.child(clickedPhone).child("new request").child("phone").getValue(String.class);
+                    String inProgress = snapshot.child(clickedPhone).child("Inprogress").child("phone").getValue(String.class);
+                    String newRequest = snapshot.child(clickedPhone).child("new request").child("phone").getValue(String.class);
 
-                    if (Inprogress.equals("null") && newr.equals("null")) {
-                        // ... (Your existing code)
+                    if (inProgress == null && newRequest == null) {
                         phone = phone1;
                         name = snapshot.child(phone).child("name").getValue(String.class);
                         email = snapshot.child(phone).child("password").getValue(String.class);
                         password = snapshot.child(phone).child("email").getValue(String.class);
                         location = snapshot.child(phone).child("location").getValue(String.class);
-                        String message = "LOCATION= " + ClientLocation + "\n Trouser=" + Trouser + "\n Jacket=" + Jacket + "\n Shirt=" + Shirt + "\n Dress=" + Dress
+
+                        String message = "Trouser=" + Trouser + "\n Jacket=" + Jacket + "\n Shirt=" + Shirt + "\n Dress=" + Dress
                                 + "\n Tshirt=" + Tshirt + "\n Skirt=" + Skirt + "\n Shoes=" + Shoes + "\n Sweater=" + Sweater + "\n" + "TOTAL=Ksh" + Total;
+
                         Newreqfromclient newreq = new Newreqfromclient(phone1, name1, message);
-                        reff.child(clickedPhone).child("new request").setValue(newreq);
-                        reff = FirebaseDatabase.getInstance().getReference("user").child(phone1).child("Pending req");
-                        Clientpending newpending = new Clientpending(clickedPhone, name, message);
-                        reff.child(newPendingKey).setValue(newpending);
-                        reff.setValue(newpending);
+                        servicemenRef.child(clickedPhone).child("new request").setValue(newreq);
+
+                        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("user").child(phone1).child("Pending req");
+                        Clientpending newPending = new Clientpending(clickedPhone, name, message);
+                        userRef.child(newPendingKey).setValue(newPending);
 
                         Toast.makeText(servicemenlist.this, "Request sent to " + clickedPhone + "\n" + name + "......", Toast.LENGTH_LONG).show();
-                        Home();
+                        navigateToHome();
                     } else {
-                        Snackbar.make(txtphone, "The serviceman is busy. Please select another one.", Snackbar.LENGTH_INDEFINITE)
+                        Snackbar.make(recyclerView, "The serviceman is busy. Please select another one.", Snackbar.LENGTH_INDEFINITE)
                                 .setAction("Dismiss", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
@@ -148,24 +140,22 @@ public class servicemenlist extends AppCompatActivity {
                                 }).show();
                     }
                 } else {
-                    txtphone.setError("User does not exist");
+                    Snackbar.make(recyclerView, "User does not exist", Snackbar.LENGTH_SHORT).show();
+
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle error
+                Toast.makeText(servicemenlist.this, "Failed to check serviceman status", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-// Modify the RecyclerView click listener
-
-    public void Home () {
+    private void navigateToHome() {
         Intent intent = new Intent(this, Home.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
-        this.finish();
-
+        finish();
     }
 }
