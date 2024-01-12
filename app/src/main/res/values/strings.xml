@@ -23,4 +23,5 @@ $9,99</string>
     <string name="home_page">HOME🏘</string>
     <string name="type_your_feedback">Type your feedback</string>
     <string name="list_header">Laundry Personnel</string>
+    <string name="splash_screen">Background image for the Laundry Home</string>
 </resources>

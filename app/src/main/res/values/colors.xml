@@ -8,7 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="lavender">#8692f7</color>
-    <color name="owl_yellow">#FFDE03</color>
+    <color name="owl_yellow">#FFB300</color>
+    <color name="random">#56BCD8</color>
     <color name="blue">#2680b6</color>
 
     <color name="colorPrimary1">#3F51B5</color>

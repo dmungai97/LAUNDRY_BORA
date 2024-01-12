@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/owl_yellow"
+    android:background="@color/random"
     tools:context=".SplashActivity">
 
     <ImageView
@@ -12,7 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/laundry_home_backgound"
-        app:layout_constraintDimensionRatio="H,16:9" />
+        app:layout_constraintDimensionRatio="H,16:9"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:contentDescription="@string/splash_screen" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
