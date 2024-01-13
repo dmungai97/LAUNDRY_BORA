@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Laundry personnel  Mis</string>
+    <string name="app_name">Laundry Application </string>
     <string name="app_names" translatable="false">LAUNDRY BORA</string>
     <string name="dev" translatable="false">MUNGAI</string>
 
@@ -24,4 +24,5 @@ $9,99</string>
     <string name="type_your_feedback">Type your feedback</string>
     <string name="list_header">Laundry Personnel</string>
     <string name="splash_screen">Background image for the Laundry Home</string>
+    <string name="header_service_login">Laundry Bora. \nLaundry Personnel</string>
 </resources>

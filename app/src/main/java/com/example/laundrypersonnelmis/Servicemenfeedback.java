@@ -20,27 +20,28 @@ public class Servicemenfeedback extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servicemenfeedback);
-        txtfeedback = (EditText) findViewById(R.id.feedbacktxt);
+        txtfeedback = findViewById(R.id.feedbacktxt);
+        reff = FirebaseDatabase.getInstance().getReference("feedback").child("Servicemen_feedback");
     }
+
 
     public void send_feedServiceman(View view) {
         feedback = txtfeedback.getText().toString();
-        if(feedback.isEmpty()) {
-            txtfeedback.setError("field is empty");
-        }else {
-            reff = FirebaseDatabase.getInstance().getReference("feedback").child("Servicemen_feedback");
-            feedback clientfeed = new feedback(feedback);
-            reff.push().setValue(clientfeed);
+        if (feedback.isEmpty()) {
+            txtfeedback.setError("Field is empty");
+        } else {
+            // Use a Feedback model class if you haven't already
+            feedback servicemanFeedback = new feedback(feedback);
+            reff.push().setValue(servicemanFeedback);
             Toast.makeText(Servicemenfeedback.this, "Feedback sent", Toast.LENGTH_SHORT).show();
             Home();
         }
-
     }
 
     public void Home() {
         Intent intent = new Intent(this, Serviceman_home.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
-        this.finish();
+        finish();
     }
 }
