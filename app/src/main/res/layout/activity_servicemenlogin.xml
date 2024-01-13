@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
-        android:text="Laundry care. \nServiceman"
+        android:text="@string/header_service_login"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"

@@ -62,10 +62,6 @@ Boolean iscalled;
         });
 
 
-
-
-
-
         iscalled=false;
         reff= FirebaseDatabase.getInstance().getReference("servicemen").child(phone1).child("new request");
         reff.addValueEventListener(new ValueEventListener() {
@@ -102,105 +98,6 @@ Boolean iscalled;
                     NotificationManagerCompat notificationManage=NotificationManagerCompat.from(Serviceman_home.this);
                     notificationManager.notify(1,builder.build());
 
-
-
-
-
-
-
-
-
-
-
-
-
-                    /*Context mContext=Serviceman_home.this;
-                            NotificationManager mNotificationManager;
-
-                    NotificationCompat.Builder mBuilder =
-                            new NotificationCompat.Builder(mContext.getApplicationContext(), "notify_001");
-                    Intent ii = new Intent(mContext.getApplicationContext(), Serviceman_inbox.class);
-                    PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, ii, 0);
-
-                    NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
-                    bigText.setBigContentTitle("Today's Bible Verse");
-                    bigText.setSummaryText("Text in detail");
-
-                    mBuilder.setContentIntent(pendingIntent);
-                    mBuilder.setSmallIcon(R.mipmap.ic_launcher);
-                    mBuilder.setContentTitle("Your Title");
-                    mBuilder.setContentText("Your text");
-                    mBuilder.setPriority(Notification.PRIORITY_MAX);
-                    mBuilder.setStyle(bigText);
-
-                    mNotificationManager =
-                            (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-
-// === Removed some obsoletes
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                    {
-                        String channelId = "Your_channel_id";
-                        NotificationChannel channel = new NotificationChannel(
-                                channelId,
-                                "Channel human readable title",
-                                NotificationManager.IMPORTANCE_HIGH);
-                        mNotificationManager.createNotificationChannel(channel);
-                        mBuilder.setChannelId(channelId);
-                    }
-
-                    mNotificationManager.notify(0, mBuilder.build());*/
-                     /*NotificationManagerCompat notificationManager=NotificationManagerCompat.from(Serviceman_home.this);
-                     Intent intent=new Intent(Serviceman_home.this,Serviceman_inbox.class);
-                    intent.putExtra("email", phone1);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    PendingIntent pendingIntent=PendingIntent.getActivity(Serviceman_home.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-                    Notification notification=new NotificationCompat.Builder(Serviceman_home.this,channelid)
-                            .setSmallIcon(R.mipmap.ic_launcher)
-                            .setContentTitle(channelid)
-                            .setContentText("New Request from:"+phone2)
-                            .setAutoCancel(true)
-                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                            .setContentIntent(pendingIntent)
-                            .build();
-                    notificationManager.notify(1,notification);*/
-
-
-                  /*  NotificationCompat.Builder builder=new NotificationCompat.Builder(Serviceman_home.this)
-                            .setSmallIcon(R.mipmap.ic_launcher)
-                            .setContentTitle(channelid)
-                            .setContentText("New Request from:"+phone2)
-                            .setAutoCancel(true);
-                    Intent intent=new Intent(Serviceman_home.this,Serviceman_inbox.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("email", phone1);
-                    PendingIntent pendingIntent=PendingIntent.getActivity(Serviceman_home.this,
-                            0, intent,  PendingIntent.FLAG_MUTABLE );
-                    builder.setContentIntent(pendingIntent);
-                    NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-                    notificationManager.notify(0,builder.build());*/
-
-                  /*  if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-                        NotificationChannel channel=new NotificationChannel("New Request","New Request",NotificationManager.IMPORTANCE_DEFAULT);
-                        NotificationManager manager=getSystemService(NotificationManager.class);
-                        manager.createNotificationChannel(channel);
-                    }
-
-                    NotificationCompat.Builder builder=new NotificationCompat.Builder(Serviceman_home.this,channelid);
-                    builder.setContentTitle("New request");
-                    builder.setContentText("From: "+phone2);
-                    builder .setSmallIcon(R.mipmap.ic_launcher);
-                    builder.setAutoCancel(true);
-                    NotificationManagerCompat notificationManagerCompat=NotificationManagerCompat.from(Serviceman_home.this);
-                    notificationManagerCompat.notify(1,builder.build());*/
-                  /*  NotificationCompat.Builder newreq= (NotificationCompat.Builder)new NotificationCompat.Builder(Serviceman_home.this)
-                      .setSmallIcon(R.mipmap.ic_launcher)
-                            .setContentTitle("New request")
-                            .setContentText("From "+phone2)
-                            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-                    newreq.build();
-                    NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-                    notificationManager.notify(0,newreq.build());
-                    Toast.makeText(Serviceman_home.this, "you have a new request", Toast.LENGTH_SHORT).show();*/
                 }
 
             }
@@ -210,11 +107,8 @@ Boolean iscalled;
 
             }
         });
-
-
-
-
     }
+
     public void profile(View view) {
         Intent intent = new Intent(getApplicationContext(), userProfile.class);
         Intent getname=getIntent();
@@ -285,12 +179,6 @@ Boolean iscalled;
 
         startActivity(intent);
     }
-
-
-
-
-
-
 
     public void feedbackserviceman(View view) {
         Intent intent = new Intent(this, Servicemenfeedback.class);
