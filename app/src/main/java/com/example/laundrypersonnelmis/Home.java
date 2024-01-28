@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -170,5 +168,25 @@ ProgressBar progressBar;
 
 
 
+    public void openServices(View view){
+        Intent intent =new Intent(this,services_activity.class);
+        Intent getname = getIntent();
+        String name1 = getname.getStringExtra("name");
+        // username.setText("NAME: "+name1);
+
+        Intent getphone = getIntent();
+        String phone1 = getphone.getStringExtra("phone");
+        // userPhone.setText("phone: "+phone1);
+
+        Intent getemail = getIntent();
+        String email1 = getemail.getStringExtra("email");
+        // useremail.setText("password: "+email1);
+        intent.putExtra("name", name1);
+        intent.putExtra("email", phone1);
+        intent.putExtra("phone", email1);
+
+        startActivity(intent);
+        startActivity(intent);
+    }
 }
 

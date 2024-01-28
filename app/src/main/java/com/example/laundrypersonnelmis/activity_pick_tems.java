@@ -2,10 +2,11 @@ package com.example.laundrypersonnelmis;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
 
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -55,18 +56,24 @@ public class activity_pick_tems extends AppCompatActivity {
         name1=getphone.getStringExtra("name");
 
     }
+    @SuppressLint("SetTextI18n")
     public void addTrouser(View view) {
         Trouser=Trouser+1;
         txtTrouser.setText(Integer.toString(Trouser));
 
         total();
     }
+    @SuppressLint("SetTextI18n")
     public void subTrouser(View view) {
-        if(Trouser==0){}else{
-            Trouser -=1;
+        if (Trouser == 0) {
+            // Add any specific logic to be executed when Trouser is already 0
+        } else {
+            Trouser -= 1;
             txtTrouser.setText(Integer.toString(Trouser));
-            total();}
+            total();
+        }
     }
+
     public void addJacket(View view) {
         Jacket=Jacket+1;
         txtJacket.setText(Integer.toString(Jacket));

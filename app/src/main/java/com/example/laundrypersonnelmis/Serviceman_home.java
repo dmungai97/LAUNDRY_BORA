@@ -185,6 +185,7 @@ Boolean iscalled;
         startActivity(intent);
     }
 
+
     public void exit(View view) {
         finishAffinity();
         System.exit(0);

@@ -4,16 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
+
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,9 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class servicemenlogin extends AppCompatActivity {
-    Button callSignup, login_btn;
-    ImageView image;
-    TextView logoText, sloganText;
     EditText txtusername, txtpassword;
     private static final String PREF_NAME = "LaundryPersonnelMIS";
     private static final String PREF_EMAIL = "email";
@@ -51,7 +50,7 @@ public class servicemenlogin extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 // Check if both email and password are not empty
                 if (!txtusername.getText().toString().isEmpty() && !txtpassword.getText().toString().isEmpty()) {
-                    isuser(); // Attempt login automatically
+                    // Don't perform automatic login here
                 }
             }
         });
@@ -69,12 +68,14 @@ public class servicemenlogin extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 // Check if both email and password are not empty
                 if (!txtusername.getText().toString().isEmpty() && !txtpassword.getText().toString().isEmpty()) {
-                    isuser(); // Attempt login automatically
+                    // Don't perform automatic login here
                 }
             }
         });
+
         loadSavedCredentials();
     }
+
     private boolean validateuemail() {
         String val = txtusername.getText().toString();
         if (val.isEmpty()) {
@@ -108,15 +109,33 @@ public class servicemenlogin extends AppCompatActivity {
         if (savedEmail != null && savedPassword != null) {
             txtusername.setText(savedEmail);
             txtpassword.setText(savedPassword);
-            isuser(); // Attempt login automatically
+            if (isNetworkAvailable()) {
+                isuser(); // Attempt login automatically only when network is available
+            } else {
+                // Display a toast message indicating that the device is offline
+                Toast.makeText(this, "No internet connection. Automatic login disabled.", Toast.LENGTH_SHORT).show();
+            }
         }
     }
+
     public void loginuser(View view) {
-        if (!validateuemail() | !validatepassword()) {
-            return;
+        if (isNetworkAvailable()) {
+            if (validateuemail() && validatepassword()) {
+                isuser();
+            }
         } else {
-            isuser();
+            // Notify the user about the lack of internet connectivity
+            Toast.makeText(this, "No internet connection. Please check your network settings.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            return networkInfo != null && networkInfo.isConnected();
+        }
+        return false;
     }
 
     private void isuser() {
@@ -130,6 +149,7 @@ public class servicemenlogin extends AppCompatActivity {
                 if(snapshot.hasChild(userEnteremail)) {
 
                     final String getpassword = snapshot.child(userEnteremail).child("email").getValue(String.class);
+                    assert getpassword != null;
                     if (getpassword.equals(userEnterPassword)) {
 
                         final String nameFromDb = snapshot.child(userEnteremail).child("name").getValue(String.class);
@@ -155,7 +175,7 @@ public class servicemenlogin extends AppCompatActivity {
                     }
                 }else {
                     txtusername.setError("No such user exists");
-                    Toast.makeText(servicemenlogin.this, "user does  not exist", Toast.LENGTH_SHORT).show();
+                    Log.d("UserNotExist", "User does not exist");;
                 }
             }
 
@@ -174,9 +194,4 @@ public class servicemenlogin extends AppCompatActivity {
         editor.apply();
     }
 
-    public void startprofile() {
-        Intent intent = new Intent(this, userProfile.class);
-        startActivity(intent);
-        this.finish();
-    }
 }
