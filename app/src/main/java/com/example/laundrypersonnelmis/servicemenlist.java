@@ -105,13 +105,16 @@ public class servicemenlist extends AppCompatActivity {
         String newPendingKey = servicemenRef.push().getKey();
 
         servicemenRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(clickedPhone)) {
                     String inProgress = snapshot.child(clickedPhone).child("Inprogress").child("phone").getValue(String.class);
                     String newRequest = snapshot.child(clickedPhone).child("new request").child("phone").getValue(String.class);
 
-                    if (inProgress == null && newRequest == null) {
+                    // Check if values are "null" strings (as per your current structure)
+                    if ("null".equals(inProgress) && "null".equals(newRequest)) {
+                        // The serviceman is available
                         phone = phone1;
                         name = snapshot.child(phone).child("name").getValue(String.class);
                         email = snapshot.child(phone).child("password").getValue(String.class);
@@ -141,9 +144,9 @@ public class servicemenlist extends AppCompatActivity {
                     }
                 } else {
                     Snackbar.make(recyclerView, "User does not exist", Snackbar.LENGTH_SHORT).show();
-
                 }
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
