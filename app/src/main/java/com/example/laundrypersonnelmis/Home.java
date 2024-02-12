@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Home extends AppCompatActivity {
-DatabaseReference reff;
+DatabaseReference ref;
 ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,8 @@ ProgressBar progressBar;
         progressBar=findViewById(R.id.taskprogressbar);
         Intent getphone=getIntent();
         String phone1= getphone.getStringExtra("phone");
-        reff= FirebaseDatabase.getInstance().getReference("user").child(phone1).child("Inprogress");
-        reff.addValueEventListener(new ValueEventListener() {
+        ref = FirebaseDatabase.getInstance().getReference("user").child(phone1).child("Inprogress");
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String phone2=snapshot.child("phone").getValue(String.class);
@@ -169,24 +169,9 @@ ProgressBar progressBar;
 
 
     public void openServices(View view){
-        Intent intent =new Intent(this,services_activity.class);
-        Intent getname = getIntent();
-        String name1 = getname.getStringExtra("name");
-        // username.setText("NAME: "+name1);
-
-        Intent getphone = getIntent();
-        String phone1 = getphone.getStringExtra("phone");
-        // userPhone.setText("phone: "+phone1);
-
-        Intent getemail = getIntent();
-        String email1 = getemail.getStringExtra("email");
-        // useremail.setText("password: "+email1);
-        intent.putExtra("name", name1);
-        intent.putExtra("email", phone1);
-        intent.putExtra("phone", email1);
-
-        startActivity(intent);
+        Intent intent =new Intent(getApplicationContext(),services_activity.class);
         startActivity(intent);
     }
+
 }
 

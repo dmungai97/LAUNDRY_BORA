@@ -10,29 +10,29 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 public class userProfile extends AppCompatActivity {
-    TextView username ,userPhone,useremail;
+    TextView username ,userPhone, userEmail;
     ImageView profile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-        username=(TextView) findViewById(R.id.textView3);
-        userPhone=(TextView) findViewById(R.id.textView6);
-        useremail=(TextView) findViewById(R.id.textView7);
+        username= findViewById(R.id.textView3);
+        userPhone= findViewById(R.id.textView6);
+        userEmail = findViewById(R.id.textView7);
         profile=findViewById(R.id.profileimg);
-        Intent getname=getIntent();
-        String name1= getname.getStringExtra("name");
+
+        Intent getName=getIntent();
+        String name1= getName.getStringExtra("name");
         username.setText(name1);
 
-        Intent getphone=getIntent();
-        String phone1= getphone.getStringExtra("phone");
+        Intent getPhone=getIntent();
+        String phone1= getPhone.getStringExtra("phone");
         userPhone.setText(phone1);
 
-        Intent getemail=getIntent();
-        String email1= getemail.getStringExtra("email");
-        String profileimage=getemail.getStringExtra("profile");
-        Glide.with(userProfile.this).load(profileimage).circleCrop().into(profile);
-        useremail.setText(email1);
-
+        Intent getEmail=getIntent();
+        String email1= getEmail.getStringExtra("email");
+        String profileImage=getEmail.getStringExtra("profile");
+        Glide.with(userProfile.this).load(profileImage).circleCrop().into(profile);
+        userEmail.setText(email1);
     }
 }

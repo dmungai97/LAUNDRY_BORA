@@ -25,8 +25,13 @@
     <color name="profileEditTextColor">#707070</color>
      <color name="cardbg">#80ffffff</color>
     <color name="cardbg2">#363668</color>
+    <color name="selectBg">#C3C3D8</color>
+    <color name="selectedColor">#78CA4B</color>
+    <color name="desiredColor">#FFC107</color>
 
-        <!-- 11 colors -->
+
+
+    <!-- 11 colors -->
 
 
 
