@@ -7,15 +7,16 @@ import android.view.View;
 import android.widget.Button;
 
 public class activity_Start extends AppCompatActivity {
-    Button btnregister ,clientbtnlogin,servicebtnlogin;
+    Button btnregister ,clientbtnlogin,servicebtnlogin,laundryMartLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        btnregister=(Button) findViewById(R.id.registerActivityBtn);
-        clientbtnlogin=(Button)findViewById(R.id.loginClientActivityBtn) ;
-        servicebtnlogin=(Button)findViewById(R.id.loginServiceActivityBtn) ;
+        btnregister= findViewById(R.id.registerActivityBtn);
+        clientbtnlogin= findViewById(R.id.loginClientActivityBtn);
+        servicebtnlogin= findViewById(R.id.loginServiceActivityBtn);
+        laundryMartLogin=findViewById(R.id.loginLaundry);
 
         btnregister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -23,8 +24,6 @@ public class activity_Start extends AppCompatActivity {
                 openNewActivity();
 
             }
-
-
         });
         clientbtnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +35,12 @@ public class activity_Start extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openservicelogin();
+            }
+        });
+        laundryMartLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openlaundryMartLogin();
             }
         });
 
@@ -50,6 +55,10 @@ public class activity_Start extends AppCompatActivity {
         Intent service =new Intent(this, servicemenlogin.class);
         startActivity(service);
 
+    }
+    public void openlaundryMartLogin(){
+        Intent service =new Intent(this, laundryMartLogin.class);
+        startActivity(service);
     }
     public void openNewActivity(){
         Intent register = new Intent(this, MainActivity.class);

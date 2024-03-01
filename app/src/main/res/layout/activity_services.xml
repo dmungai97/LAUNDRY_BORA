@@ -47,15 +47,15 @@
             <!-- First CardView -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/firstCardView"
+                android:tag="washing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-
                 android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                android:focusable="true">
+                >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -90,11 +90,11 @@
             <!-- Second CardView -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/secondCardView"
+                android:tag="steampress"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-
-                android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="0dp">
@@ -103,7 +103,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:focusable="true">
 
                     <ImageView
                         android:layout_width="80dp"
@@ -129,15 +130,14 @@
             <!-- Third CardView -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/thirdCardView"
+                android:tag="drycleaning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-
-                android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                android:focusable="true">
+                >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -170,15 +170,15 @@
             <!-- Fourth CardView -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fourthCardView"
+                android:tag="ironing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-
-                android:clickable="true"
                 android:foreground="?selectableItemBackground"
+                android:clickable="true"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                android:focusable="true">
+              >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -212,6 +212,7 @@
             <!-- Fifth CardView -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fifthCardView"
+                android:tag="duvet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -221,7 +222,6 @@
                 android:layout_marginBottom="8dp"
 
                 android:clickable="true"
-                android:focusable="true"
                 android:foreground="?selectableItemBackground"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="0dp">
@@ -262,13 +262,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Next"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textAllCaps="false"
-        android:padding="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="24dp"
+        android:padding="16dp"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="#263238"
+        android:textSize="18sp" />
 
 </RelativeLayout>

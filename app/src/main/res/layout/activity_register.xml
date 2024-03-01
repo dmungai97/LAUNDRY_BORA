@@ -23,7 +23,8 @@
         app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.023"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -128,39 +129,57 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <RadioGroup
-            android:id="@+id/radiogroup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/registerClient"
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:checked="true"
-                android:text="Client" />
-
-            <RadioButton
-                android:id="@+id/registerserviceman"
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="Laundry Personnel" />
-        </RadioGroup>
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnRegister"
+        <LinearLayout
+            android:id="@+id/bottomLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/red_style"
-            android:backgroundTint="#4CAF50"
-            android:drawableRight="@drawable/ic_baseline_cloud_upload_24"
-            android:padding="10dp"
-            android:text="Register"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout">
+
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/registerClient"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Client" />
+
+                <RadioButton
+                    android:id="@+id/registerserviceman"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Laundry Personnel" />
+
+                <RadioButton
+                    android:id="@+id/registerLaundryMart"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Laundry Mart" />
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/red_style"
+                android:backgroundTint="#4CAF50"
+                android:drawableRight="@drawable/ic_baseline_cloud_upload_24"
+                android:padding="10dp"
+                android:text="Register"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

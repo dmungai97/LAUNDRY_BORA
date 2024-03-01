@@ -21,14 +21,14 @@
         android:id="@+id/registerActivityBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="92dp"
+        android:layout_marginBottom="16dp"
         android:width="200dp"
         android:backgroundTint="#5AC8FA"
         android:text="Register"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
 
         tools:ignore="DuplicateClickableBoundsCheck" />
@@ -78,6 +78,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.805" />
 
+    <Button
+        android:id="@+id/loginLaundry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="200dp"
+        android:backgroundTint="#EBFAFE"
+        android:text="Laundry Mart"
+        android:textColor="#1565C0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginServiceActivityBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

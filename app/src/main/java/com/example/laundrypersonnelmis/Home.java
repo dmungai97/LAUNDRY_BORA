@@ -45,7 +45,6 @@ ProgressBar progressBar;
 
     }
 
-
     public void feedback(View view) {
         Intent intent = new Intent(this, Client_Feedback.class);
         startActivity(intent);
@@ -168,8 +167,9 @@ ProgressBar progressBar;
 
 
 
-    public void openServices(View view){
-        Intent intent =new Intent(getApplicationContext(),services_activity.class);
+    public void openServices(View view) {
+        Intent intent = new Intent(Home.this, services_activity.class); // Use the activity context
+        intent.putExtra("phone", getIntent().getStringExtra("phone")); // Pass the phone number to services_activity
         startActivity(intent);
     }
 
