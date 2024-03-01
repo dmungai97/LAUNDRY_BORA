@@ -3,6 +3,21 @@
 Laundry Bora is a convenient Android application designed to connect users with laundry services offered by local laundry marts and individual laundry experts known as "Mama Fua" . The app provides a seamless platform for users to schedule laundry services, explore different service providers, and rate their experiences.
 
 ## Features
+##Login
+![Screenshot_2024-03-01-16-11-53-654_com example laundrypersonnelmis](https://github.com/dmungai97/LAUNDRY_BORA/assets/64370903/63172691-90e1-4c67-bf52-43556c27719f)
+
+##Home Page
+![Screenshot_2024-03-01-16-13-17-235_com example laundrypersonnelmis](https://github.com/dmungai97/LAUNDRY_BORA/assets/64370903/aa81796e-700c-4ab3-ae10-5d1b65d49fe2)
+
+## Select Laundry
+![Screenshot_2024-03-01-16-13-22-829_com example laundrypersonnelmis](https://github.com/dmungai97/LAUNDRY_BORA/assets/64370903/df3cb3bb-8b44-4e9b-9b1c-61af6cdbd611)
+
+## Select Laundry Personell
+![Screenshot_2024-03-01-16-13-28-860_com example laundrypersonnelmis](https://github.com/dmungai97/LAUNDRY_BORA/assets/64370903/7c63733d-0bbf-4be2-b172-d4238550199a)
+
+
+
+
 
 - **Service Connection**: Easily connect with nearby laundry marts and Mama Fuas for your laundry needs.
 - **Service Exploration**: Browse through various service providers to find the one that best suits your requirements.
