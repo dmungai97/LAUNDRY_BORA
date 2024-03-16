@@ -19,15 +19,23 @@ public class services_activity extends AppCompatActivity {
     private CardView[] cardViews;
     private Button nextButton;
     private String userPhone;
+    private String collectionDateTime;
+    private String deliveryDateTime;
+    private String frequency;
+    private String specialInstructionsText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
 
-        // Get the user's phone number from the intent
+         //Get the user's phone number from the intent
         Intent intent = getIntent();
-        userPhone = intent.getStringExtra("email");
+        userPhone = intent.getStringExtra("phone");
+        collectionDateTime = intent.getStringExtra("collectionDateTime");
+        deliveryDateTime = intent.getStringExtra("deliveryDateTime");
+        frequency = intent.getStringExtra("frequency");
+        specialInstructionsText=intent.getStringExtra("specialInstructionsText");
 
         // Initialize CardViews
         cardViews = new CardView[]{
@@ -69,8 +77,12 @@ public class services_activity extends AppCompatActivity {
                 if (isAnyCardSelected()) {
                     // Navigate to Service_Order_DetailsActivity
                     Intent intent = new Intent(services_activity.this, Service_Order_DetailsActivity.class);
-                    intent.putExtra("email", userPhone);
+                    intent.putExtra("phone", userPhone);
                     intent.putExtra("Orders", selectedItemsBuilder.toString()); // Pass the selectedItems data
+                    intent.putExtra("collectionDateTime", collectionDateTime);
+                    intent.putExtra("deliveryDateTime", deliveryDateTime);
+                    intent.putExtra("frequency",frequency);
+                    intent.putExtra("specialInstructionsText",specialInstructionsText);
                     startActivity(intent);
 
                 } else {

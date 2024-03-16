@@ -16,14 +16,15 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Home extends AppCompatActivity {
 DatabaseReference ref;
+
 ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         progressBar=findViewById(R.id.taskprogressbar);
-        Intent getphone=getIntent();
-        String phone1= getphone.getStringExtra("phone");
+        Intent getPhone=getIntent();
+        String phone1= getPhone.getStringExtra("phone");
         ref = FirebaseDatabase.getInstance().getReference("user").child(phone1).child("Inprogress");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -53,17 +54,17 @@ ProgressBar progressBar;
 
     public void profile(View view) {
         Intent intent = new Intent(getApplicationContext(), userProfile.class);
-        Intent getname=getIntent();
-        String name1= getname.getStringExtra("name");
+        Intent getName=getIntent();
+        String name1= getName.getStringExtra("name");
         // username.setText("NAME: "+name1);
 
-        Intent getphone=getIntent();
-        String phone1= getphone.getStringExtra("phone");
+        Intent getPhone=getIntent();
+        String phone1= getPhone.getStringExtra("phone");
         // userPhone.setText("phone: "+phone1);
 
-        Intent getemail=getIntent();
-        String email1= getemail.getStringExtra("email");
-        String image=getemail.getStringExtra("image");
+        Intent getEmail=getIntent();
+        String email1= getEmail.getStringExtra("email");
+        String image=getEmail.getStringExtra("image");
 
         intent.putExtra("name", name1);
         intent.putExtra("email", phone1);
@@ -73,16 +74,16 @@ ProgressBar progressBar;
     }
     public void send_request(View view) {
         Intent intent = new Intent(getApplicationContext(),activity_pick_tems.class);
-        Intent getname=getIntent();
-        String name1= getname.getStringExtra("name");
+        Intent getName=getIntent();
+        String name1= getName.getStringExtra("name");
         // username.setText("NAME: "+name1);
 
-        Intent getphone=getIntent();
-        String phone1= getphone.getStringExtra("phone");
+        Intent getPhone=getIntent();
+        String phone1= getPhone.getStringExtra("phone");
         // userPhone.setText("phone: "+phone1);
 
-        Intent getemail=getIntent();
-        String email1= getemail.getStringExtra("email");
+        Intent getEmail=getIntent();
+        String email1= getEmail.getStringExtra("email");
         // useremail.setText("password: "+email1);
         intent.putExtra("name", name1);
         intent.putExtra("email", phone1);
@@ -132,12 +133,12 @@ ProgressBar progressBar;
         String name1= getname.getStringExtra("name");
         // username.setText("NAME: "+name1);
 
-        Intent getphone=getIntent();
-        String phone1= getphone.getStringExtra("phone");
+        Intent getPhone=getIntent();
+        String phone1= getPhone.getStringExtra("phone");
         // userPhone.setText("phone: "+phone1);
 
-        Intent getemail=getIntent();
-        String email1= getemail.getStringExtra("email");
+        Intent getEmail=getIntent();
+        String email1= getEmail.getStringExtra("email");
         // useremail.setText("password: "+email1);
         intent.putExtra("name", name1);
         intent.putExtra("email", phone1);
@@ -147,16 +148,16 @@ ProgressBar progressBar;
     }
     public void pendingreq(View view) {
         Intent intent = new Intent(getApplicationContext(), Client_pendingreq.class);
-        Intent getname = getIntent();
-        String name1 = getname.getStringExtra("name");
+        Intent getName = getIntent();
+        String name1 = getName.getStringExtra("name");
         // username.setText("NAME: "+name1);
 
-        Intent getphone = getIntent();
-        String phone1 = getphone.getStringExtra("phone");
+        Intent getPhone = getIntent();
+        String phone1 = getPhone.getStringExtra("phone");
         // userPhone.setText("phone: "+phone1);
 
-        Intent getemail = getIntent();
-        String email1 = getemail.getStringExtra("email");
+        Intent getEmail = getIntent();
+        String email1 = getEmail.getStringExtra("email");
         // useremail.setText("password: "+email1);
         intent.putExtra("name", name1);
         intent.putExtra("email", phone1);
@@ -167,9 +168,9 @@ ProgressBar progressBar;
 
 
 
-    public void openServices(View view) {
-        Intent intent = new Intent(Home.this, services_activity.class); // Use the activity context
-        intent.putExtra("phone", getIntent().getStringExtra("phone")); // Pass the phone number to services_activity
+    public void openDelivery(View view) {
+        Intent intent = new Intent(Home.this, Collection_and_Delivery.class); // Use the activity context
+        intent.putExtra("phone", getIntent().getStringExtra("phone")); // Pass the phone number to collection_delivery_activity
         startActivity(intent);
     }
 

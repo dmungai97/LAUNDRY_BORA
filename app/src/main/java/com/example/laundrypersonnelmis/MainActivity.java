@@ -3,16 +3,12 @@ package com.example.laundrypersonnelmis;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,9 +30,7 @@ import com.google.firebase.storage.FirebaseStorage;
 //import com.google.firebase.storage.OnFailureListener;
 //import com.google.firebase.storage.OnSuccessListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -81,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
         radioGroup = findViewById(R.id.radiogroup);
         rbClient = findViewById(R.id.registerClient);
         rbService = findViewById(R.id.registerserviceman);
-        rbLaundryMart = findViewById(R.id.registerLaundryMart); // New RadioButton
-
+        rbLaundryMart = findViewById(R.id.registerLaundryMart);
         userImage = findViewById(R.id.userimage);
         pickImageBtn = findViewById(R.id.registerPickdateBtn);
         progressBar = findViewById(R.id.progressBar2);
@@ -102,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (rbClient.isChecked()) {
+        if (rbClient.isChecked()) {// Check if "Client" is selected
             registerClient();
-        } else if (rbService.isChecked()) {
+        } else if (rbService.isChecked()) {// Check if "Serviceman" is selected
             registerServiceMan();
         } else if (rbLaundryMart.isChecked()) { // Check if "Laundry Mart" is selected
             registerLaundryMart();
@@ -226,14 +219,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createLaundryMart(String imageUrl) {
-        // Perform the necessary operations for registering a laundry mart user
+
         laundryMart newLaundryMart = new laundryMart(name, password, phone, email, location, imageUrl);
         databaseReference.setValue(newLaundryMart);
-        // Any other specific operations for laundry mart user registration
-
         progressBar.setVisibility(View.INVISIBLE);
         Toast.makeText(MainActivity.this, "Successfully Registered a Laundry Mart", Toast.LENGTH_LONG).show();
-        laundryMartLogin(); // Assuming you have a login method for laundry mart users
+        laundryMartLogin();
     }
 
 

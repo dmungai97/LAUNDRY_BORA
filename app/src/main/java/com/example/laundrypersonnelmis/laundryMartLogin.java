@@ -27,18 +27,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class laundryMartLogin extends AppCompatActivity {
-    EditText txtusername, txtpassword;
+    EditText txtUserPhone, txtPassword;
     private static final String PREF_NAME = "LaundryPersonnelMIS";
     private static final String PREF_EMAIL = "email";
     private static final String PREF_PASSWORD = "password";
+
+    private String userEnterPhone;
+    private String userEnterPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_laundry_mart_login);
-        txtusername = findViewById(R.id.loginEmailEditText);
-        txtpassword = findViewById(R.id.loginPasswordEditText);
-        txtusername.addTextChangedListener(new TextWatcher() {
+        txtUserPhone = findViewById(R.id.loginEmailEditText);
+        txtPassword = findViewById(R.id.loginPasswordEditText);
+        txtUserPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -50,13 +53,13 @@ public class laundryMartLogin extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 // Check if both email and password are not empty
-                if (!txtusername.getText().toString().isEmpty() && !txtpassword.getText().toString().isEmpty()) {
+                if (!txtUserPhone.getText().toString().isEmpty() && !txtPassword.getText().toString().isEmpty()) {
                     // Don't perform automatic login here
                 }
             }
         });
 
-        txtpassword.addTextChangedListener(new TextWatcher() {
+        txtPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -68,7 +71,7 @@ public class laundryMartLogin extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 // Check if both email and password are not empty
-                if (!txtusername.getText().toString().isEmpty() && !txtpassword.getText().toString().isEmpty()) {
+                if (!txtUserPhone.getText().toString().isEmpty() && !txtPassword.getText().toString().isEmpty()) {
                     // Don't perform automatic login here
                 }
             }
@@ -77,9 +80,9 @@ public class laundryMartLogin extends AppCompatActivity {
         loadSavedCredentials();
     }
     private boolean validateuemail() {
-        String val = txtusername.getText().toString();
+        String val = txtUserPhone.getText().toString();
         if (val.isEmpty()) {
-            txtusername.setError("field cannot be empty");
+            txtUserPhone.setError("field cannot be empty");
 
             return false;
         } else {
@@ -89,13 +92,13 @@ public class laundryMartLogin extends AppCompatActivity {
     }
 
     private boolean validatePassword() {
-        String val = txtpassword.getText().toString();
+        String val = txtPassword.getText().toString();
         if (val.isEmpty()) {
-            txtpassword.setError("field cannot be empty");
+            txtPassword.setError("field cannot be empty");
             //txtpassword.setError(null);
             return false;
         } else {
-            txtpassword.setError(null);
+            txtPassword.setError(null);
             // txtpassword.setErrorEnabled(false);
             return true;
         }
@@ -107,10 +110,10 @@ public class laundryMartLogin extends AppCompatActivity {
         String savedPassword = preferences.getString(PREF_PASSWORD, null);
 
         if (savedEmail != null && savedPassword != null) {
-            txtusername.setText(savedEmail);
-            txtpassword.setText(savedPassword);
+            txtUserPhone.setText(savedEmail);
+            txtPassword.setText(savedPassword);
             if (isNetworkAvailable()) {
-                isuser(); // Attempt login automatically only when network is available
+                isUser(); // Attempt login automatically only when network is available
             } else {
                 // Display a toast message indicating that the device is offline
                 Toast.makeText(this, "No internet connection. Automatic login disabled.", Toast.LENGTH_SHORT).show();
@@ -122,7 +125,7 @@ public class laundryMartLogin extends AppCompatActivity {
     public void openServices(View view) {
         if (isNetworkAvailable()) {
             if (validateuemail() && validatePassword()) {
-                isuser();
+                isUser();
             }
         } else {
             // Notify the user about the lack of internet connectivity
@@ -140,9 +143,9 @@ public class laundryMartLogin extends AppCompatActivity {
         return false;
     }
 
-    private void isuser() {
-        String userEnterPhone = txtusername.getText().toString();
-        String userEnterPassword = txtpassword.getText().toString();
+    private void isUser() {
+        userEnterPhone = txtUserPhone.getText().toString();
+        userEnterPassword = txtPassword.getText().toString();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("laundry_mart");
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -158,7 +161,7 @@ public class laundryMartLogin extends AppCompatActivity {
                         final String emailFromDb = snapshot.child(userEnterPhone).child("phone").getValue(String.class);
                         final String phoneFromDb = snapshot.child(userEnterPhone).child("password").getValue(String.class);
                         final String imageFromDb =snapshot.child(userEnterPhone).child("imageUri").getValue(String.class);
-                        Intent intent = new Intent(getApplicationContext(), services_activity.class);
+                        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                         intent.putExtra("name", nameFromDb);
                         intent.putExtra("email", emailFromDb);
                         intent.putExtra("phone", phoneFromDb);
@@ -168,11 +171,11 @@ public class laundryMartLogin extends AppCompatActivity {
                         saveCredentials(); // Save credentials upon successful login
 
                     } else {
-                        txtpassword.setError("invalid password");
+                        txtPassword.setError("invalid password");
                         // Toast.makeText(login.this, "wrong password", Toast.LENGTH_SHORT).show();
                     }
                 }else {
-                    txtusername.setError("No such user exists");
+                    txtUserPhone.setError("No such user exists");
                     Toast.makeText(laundryMartLogin.this, "user does  not exist", Toast.LENGTH_SHORT).show();
                 }
 
@@ -187,8 +190,8 @@ public class laundryMartLogin extends AppCompatActivity {
     private void saveCredentials() {
         SharedPreferences preferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(PREF_EMAIL, txtusername.getText().toString().trim());
-        editor.putString(PREF_PASSWORD, txtpassword.getText().toString().trim());
+        editor.putString(PREF_EMAIL, txtUserPhone.getText().toString().trim());
+        editor.putString(PREF_PASSWORD, txtPassword.getText().toString().trim());
 
         if (editor.commit()) {
             // Data successfully saved
