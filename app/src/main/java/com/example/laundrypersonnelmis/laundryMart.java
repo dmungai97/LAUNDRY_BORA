@@ -1,5 +1,7 @@
 package com.example.laundrypersonnelmis;
 
+import android.widget.Button;
+
 public class laundryMart {
     private String name;
     private String password;
@@ -7,6 +9,7 @@ public class laundryMart {
     private String email;
     private String location;
     private String imageUrl;
+    private Button selectVendorButton;
 
     public laundryMart() {
         // Default constructor required for Firebase
@@ -64,6 +67,14 @@ public class laundryMart {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public Button getSelectVendorButton() {
+        return selectVendorButton;
+    }
+
+    public void setSelectVendorButton(Button selectVendorButton) {
+        this.selectVendorButton = selectVendorButton;
     }
 
     public void setImageUrl(String imageUrl) {

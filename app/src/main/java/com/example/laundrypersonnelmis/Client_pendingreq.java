@@ -53,13 +53,6 @@ public class Client_pendingreq extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
     }
     public void  cancel(View view) {
         phonecheck = txtphone.getText().toString();
@@ -93,8 +86,6 @@ public class Client_pendingreq extends AppCompatActivity {
 
 
                     }
-
-
                 }
 
                 @Override

@@ -54,9 +54,5 @@ public class clienthistory extends AppCompatActivity {
 
             }
         });
-
-
     }
-
-
 }

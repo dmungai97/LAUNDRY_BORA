@@ -85,6 +85,7 @@ public class Service_Order_DetailsActivity extends AppCompatActivity {
                 pushSelectedCardsToDatabase();
                 // Save collection and delivery date/time to the database
                 saveDateTimeToDatabase();
+                makeOrder();
             }
         });
     }
@@ -159,5 +160,16 @@ public class Service_Order_DetailsActivity extends AppCompatActivity {
         } else {
             Log.e(TAG, "User phone number or date/time is null");
         }
+    }
+
+    private void makeOrder(){
+        Intent intent = new Intent(Service_Order_DetailsActivity.this, Laundry_Mart_List.class);
+        intent.putExtra("phone", userPhone);
+//        intent.putExtra("Orders",Orders); // Pass the selectedItems data
+        intent.putExtra("collectionDateTime", collectionDateTime);
+        intent.putExtra("deliveryDateTime", deliveryDateTime);
+        intent.putExtra("frequency",frequency);
+        intent.putExtra("specialInstructionsText",specialInstructionsText);
+        startActivity(intent);
     }
 }

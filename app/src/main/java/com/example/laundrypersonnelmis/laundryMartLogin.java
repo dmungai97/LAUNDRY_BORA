@@ -161,7 +161,7 @@ public class laundryMartLogin extends AppCompatActivity {
                         final String emailFromDb = snapshot.child(userEnterPhone).child("phone").getValue(String.class);
                         final String phoneFromDb = snapshot.child(userEnterPhone).child("password").getValue(String.class);
                         final String imageFromDb =snapshot.child(userEnterPhone).child("imageUri").getValue(String.class);
-                        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), Laundry_Mart_Profile.class);
                         intent.putExtra("name", nameFromDb);
                         intent.putExtra("email", emailFromDb);
                         intent.putExtra("phone", phoneFromDb);
