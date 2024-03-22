@@ -32,6 +32,7 @@ public class Service_Order_DetailsActivity extends AppCompatActivity {
     private String specialInstructionsText;
     private boolean toastShown = false;
 
+
     // Database reference
     private DatabaseReference databaseReference;
 
@@ -165,7 +166,7 @@ public class Service_Order_DetailsActivity extends AppCompatActivity {
     private void makeOrder(){
         Intent intent = new Intent(Service_Order_DetailsActivity.this, Laundry_Mart_List.class);
         intent.putExtra("phone", userPhone);
-//        intent.putExtra("Orders",Orders); // Pass the selectedItems data
+        intent.putExtra("Orders",selectedItems); // Pass the selectedItems data
         intent.putExtra("collectionDateTime", collectionDateTime);
         intent.putExtra("deliveryDateTime", deliveryDateTime);
         intent.putExtra("frequency",frequency);

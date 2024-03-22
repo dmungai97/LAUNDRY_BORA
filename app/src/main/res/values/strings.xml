@@ -26,4 +26,8 @@ $9,99</string>
     <string name="splash_screen">Background image for the Laundry Home</string>
     <string name="header_service_login">Laundry Bora. \nLaundry Personnel</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_laundry_mart_home">Laundry_Mart_Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Laundry Requests</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

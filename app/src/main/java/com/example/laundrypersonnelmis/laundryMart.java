@@ -2,6 +2,9 @@ package com.example.laundrypersonnelmis;
 
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class laundryMart {
     private String name;
     private String password;
@@ -10,6 +13,7 @@ public class laundryMart {
     private String location;
     private String imageUrl;
     private Button selectVendorButton;
+    private List<Order> orders; // Corrected field name
 
     public laundryMart() {
         // Default constructor required for Firebase
@@ -22,9 +26,11 @@ public class laundryMart {
         this.email = email;
         this.location = location;
         this.imageUrl = imageUrl;
+        this.orders = new ArrayList<>();
     }
 
     // Getters and setters for the class properties
+
     public String getName() {
         return name;
     }
@@ -80,5 +86,12 @@ public class laundryMart {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-}
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+}
