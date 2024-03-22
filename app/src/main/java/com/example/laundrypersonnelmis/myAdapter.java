@@ -3,17 +3,24 @@ package com.example.laundrypersonnelmis;
 import static java.lang.Float.parseFloat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -52,9 +59,9 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-TextView phone,name,email,location,ratingk;
-RatingBar ratingBar;
-ImageView imageView;
+        TextView phone,name,email,location,ratingk;
+        RatingBar ratingBar;
+        ImageView imageView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             phone=itemView.findViewById(R.id.phone);
@@ -67,3 +74,4 @@ ImageView imageView;
         }
     }
 }
+

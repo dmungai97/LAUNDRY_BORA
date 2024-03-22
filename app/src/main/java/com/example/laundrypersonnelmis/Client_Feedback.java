@@ -26,6 +26,7 @@ public class Client_Feedback extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_feedback);
         txtfeedback=(EditText) findViewById(R.id.feedbacktxt);
+        reff = FirebaseDatabase.getInstance().getReference("feedback").child("Servicemen_feedback");
     }
     public void send_feed (View view){
 

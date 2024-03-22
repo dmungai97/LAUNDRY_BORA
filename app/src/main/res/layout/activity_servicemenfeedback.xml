@@ -149,7 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:onClick="send_feed"
+            android:onClick="send_feedServiceman"
             android:text="submit"
             android:background="#2680b6"
 

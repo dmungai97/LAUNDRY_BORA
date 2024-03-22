@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,7 +35,42 @@ public class clientslogin extends AppCompatActivity {
         setContentView(R.layout.activity_clientslogin);
         txtusername = (EditText)findViewById(R.id.loginEmailEditText);
         txtpassword = (EditText)findViewById(R.id.loginPasswordEditText);
+        txtusername.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // Check if both email and password are not empty
+                if (!txtusername.getText().toString().isEmpty() && !txtpassword.getText().toString().isEmpty()) {
+                    isuser(); // Attempt login automatically
+                }
+            }
+        });
+
+        txtpassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // Check if both email and password are not empty
+                if (!txtusername.getText().toString().isEmpty() && !txtpassword.getText().toString().isEmpty()) {
+                    isuser(); // Attempt login automatically
+                }
+            }
+        });
+        loadSavedCredentials();
     }
 
     private boolean validateuemail() {
@@ -58,6 +95,20 @@ public class clientslogin extends AppCompatActivity {
             txtpassword.setError(null);
             // txtpassword.setErrorEnabled(false);
             return true;
+        }
+    }
+
+    private void loadSavedCredentials() {
+        SharedPreferences preferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+        String savedEmail = preferences.getString(PREF_EMAIL, null);
+        String savedPassword = preferences.getString(PREF_PASSWORD, null);
+
+        if (savedEmail != null && savedPassword != null) {
+            txtusername.setText(savedEmail);
+            txtpassword.setText(savedPassword);
+            isuser(); // Attempt login automatically
+        }else{
+            isuser();
         }
     }
 
@@ -120,7 +171,7 @@ public class clientslogin extends AppCompatActivity {
 
         if (editor.commit()) {
             // Data successfully saved
-            Toast.makeText(clientslogin.this, "Credentials saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(clientslogin.this, "Success", Toast.LENGTH_SHORT).show();
         } else {
             // Failed to save data
             Toast.makeText(clientslogin.this, "Failed to save credentials", Toast.LENGTH_SHORT).show();

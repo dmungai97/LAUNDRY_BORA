@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +38,41 @@ public class servicemenlogin extends AppCompatActivity {
         setContentView(R.layout.activity_servicemenlogin);
         txtusername = (EditText)findViewById(R.id.loginEmailEditText);
         txtpassword = (EditText)findViewById(R.id.loginPasswordEditText);
+        txtusername.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // Check if both email and password are not empty
+                if (!txtusername.getText().toString().isEmpty() && !txtpassword.getText().toString().isEmpty()) {
+                    isuser(); // Attempt login automatically
+                }
+            }
+        });
+
+        txtpassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // Check if both email and password are not empty
+                if (!txtusername.getText().toString().isEmpty() && !txtpassword.getText().toString().isEmpty()) {
+                    isuser(); // Attempt login automatically
+                }
+            }
+        });
         loadSavedCredentials();
     }
     private boolean validateuemail() {
